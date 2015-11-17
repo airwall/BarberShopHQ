@@ -2,10 +2,11 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sinatra/activerecord'
 
 set :database, "sqlite3:barbershop.db"
 
-class Clients < Activerecord::Base 
+class Clients < ActiveRecord::Base 
 end
 
 get '/' do
