@@ -14,8 +14,8 @@
       <form class="form-inline" action="/showusers" method="POST"  role="form">
   <select class="form-control" name="delbarb">
 
-  <% @barber.each do |item| %>
-        <option> <%= barber.name %></option>
+  <% @barbers.each do |item| %>
+        <option> <%= item.name %></option>
       <% end %>
   
   </select>
@@ -39,11 +39,11 @@
   <tbody>
           <% @results.each do |row| %>
  <tr>
-      <td><%= row['username'] %></td>
-      <td><%= row['phone'] %></td>
-      <td><%= row['datestamp'] %></td>
-      <td><%= row['barber'] %></td>
-      <td style="background-color: <%= row['color'] %>"><%= row['color'] %></td>
+      <td><%= row.name %></td>
+      <td><%= row.phone %></td>
+      <td><%= row.datestamp %></td>
+      <td><%= row.barber %></td>
+      <td style="background-color: <%= row['color'] %>"><%= row.color %></td>
  </tr>
             <% end %>
 </tbody>

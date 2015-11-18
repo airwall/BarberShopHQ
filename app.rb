@@ -56,5 +56,7 @@ get '/about' do
 end
 
 get '/showusers' do
+
+	@results = Client.all
 	erb :showusers
 end
