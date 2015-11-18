@@ -4,23 +4,25 @@
 <div ><h2><p class="text-primary">Записаться</p></h2></div>
 <div><p class="text-info">На этой странице вы можете записаться в Barber Shop</p></div>
 
-<%if @name && @name.length > 0 && @phone && @phone.length > 0 then %>
-			          <div class="alert alert-info"><p class="text-left"><%=@name%>, Вы записаны на <%=@datestamp%>, к парикмахеру <%=@barber%></p></div>
-			      <% end %>
+<!--<%if params[:name] && params[:name].length > 0 && params[:phone] && params[:phone].length > 0 then %>
+			          <div class="alert alert-info"><p class="text-left"><%=params[:name]%>, Вы записаны на <%=params[:datestamp]%>, к парикмахеру <%=params[:barber]%></p></div>
+			      <% end %> -->
+
+ <div class="alert alert-info"><p class="text-left"><%= @alert %></p></div> 
 
 <form action="/visit" method="POST"  role="form" >
 <div class="form-group">
     <label>Имя</label>
-    <input type="text" name='name' class="form-control"  placeholder="Jane Doe" value="<%=@name%>" >
+    <input type="text" name='client[name]' class="form-control"  placeholder="Jane Doe" value="" >
   </div>
   <div class="form-group">
     <label>Телефон</label>
-    <input type="text" name='phone' class="form-control"  placeholder="079 515151" value="<%=@phone%>"
+    <input type="text" name='client[phone]' class="form-control"  placeholder="079 515151" value=""
   </div>
 <p></p>
   <div class="form-grup">
 		  <label>Выберите парикмахера</label>
-		  <select class="form-control" id="barbername" name="barber" >
+		  <select class="form-control" id="barbername" name="client[barber]" >
 		  <% @barbers.each do |item| %>
         <option <%= @barbers == item.name ? 'selected' : '' %>><%= item.name %></option>
       <% end %>
@@ -29,13 +31,13 @@
 <p></p>
 <label>Выберите дату и время</label>
 <div class="form-grup">
- <input class="form-control" name ='datestamp' id="datetimepicker_rantime" type="text" value="<%=@datestamp%>">
+ <input class="form-control" name ='client[datestamp]' id="datetimepicker_rantime" type="text" value="">
 </div>
 
   <p></p>
  <div class="form-group"> 
   <label>Выберите цвет</label>
-  <select id="color" name='color'>
+  <select id="color" name='client[color]'>
   <option value="#7bd148">Green</option>
   <option value="#5484ed">Bold blue</option>
   <option value="#a4bdfc">Blue</option>

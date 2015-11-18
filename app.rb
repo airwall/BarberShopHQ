@@ -12,37 +12,21 @@ end
 class Barber < ActiveRecord::Base 
 end
 
+before do
+	@barbers = Barber.all
+end
+
 get '/' do
 	erb :index
 end
 
 get '/visit' do
-	@barbers = Barber.all
 	erb :visit
 end
 
 post '/visit' do
-	@barbers = Barber.all
-
-	@name = params[:name]
-	@phone = params[:phone]
-	@barber = params[:barber]
-	@datestamp = params[:datestamp]
-	@color = params[:color]	
-	# Первый варьянт записи в ьаблицу ==========
-	# Client.create :name => @name, :phone => @phone, :barber => @barber,
-	# 				:datestamp => @datestamp, :color => @color
-	# =========================
-	# втрой вырьянт записи в таблицу ==========
-	c = Client.new
-	c.name = @name
-	c.phone = @phone
-	c.barber = @barber
-	c.datestamp = @datestamp
-	c.color = @color
+	c = Client.new params[:client]
 	c.save
-
-	erb :visit
 end
 
 
