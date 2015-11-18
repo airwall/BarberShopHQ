@@ -57,6 +57,12 @@ end
 
 get '/showusers' do
 
-	@results = Client.all
+	@results = Client.order ('created_at DESC')
 	erb :showusers
 end
+
+get '/client/:id' do
+	@client = Client.find(params[:id])
+	erb :client
+end
+
