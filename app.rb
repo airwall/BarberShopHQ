@@ -27,16 +27,17 @@ get '/' do
 end
 
 get '/visit' do
+	@c = Client.new 
 	erb :visit
 end
 
 post '/visit' do
-	c = Client.new params[:client]
-	if c.save
-	@alert = "Вы записанны!"
-	erb :visit
+	@c = Client.new params[:client]
+	if @c.save
+		@alert = "Вы записанны!"
+		erb :visit
 	else
-		@error = "Заполните все поля!"
+		@error = @c.errors.full_messages.first
 		erb :visit
 	end
 end
