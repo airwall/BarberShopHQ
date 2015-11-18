@@ -4,12 +4,6 @@
 <div ><h2><p class="text-primary">Записаться</p></h2></div>
 <div><p class="text-info">На этой странице вы можете записаться в Barber Shop</p></div>
 
-<!--<%if params[:name] && params[:name].length > 0 && params[:phone] && params[:phone].length > 0 then %>
-			          <div class="alert alert-info"><p class="text-left"><%=params[:name]%>, Вы записаны на <%=params[:datestamp]%>, к парикмахеру <%=params[:barber]%></p></div>
-			      <% end %> -->
-
- <div class="alert alert-info"><p class="text-left"><%= @alert %></p></div> 
-
 <form action="/visit" method="POST"  role="form" >
 <div class="form-group">
     <label>Имя</label>

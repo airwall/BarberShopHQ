@@ -32,8 +32,13 @@ end
 
 post '/visit' do
 	c = Client.new params[:client]
-	c.save
+	if c.save
+	@alert = "Вы записанны!"
 	erb :visit
+	else
+		@error = "Заполните все поля!"
+		erb :visit
+	end
 end
 
 

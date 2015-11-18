@@ -54,6 +54,9 @@
 			      <%if @error && @error.length > 0 then %>
 			          <div class="alert alert-danger"><%=@error%></div>
 			      <% end %>
+			      <%if @alert && @alert.length > 0 then %>
+			    <div class="alert alert-info"><p class="text-left"><%=@alert%></p></div>
+			      <% end %>
 			      <%= yield %>
 			</div>
 
