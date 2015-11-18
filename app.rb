@@ -29,11 +29,22 @@ post '/visit' do
 	@barber = params[:barber]
 	@datestamp = params[:datestamp]
 	@color = params[:color]	
-	
-	Client.create :name => @name, :phone => @phone, :barber => @barber,
-					:datestamp => @datestamp, :color => @color
+	# Первый варьянт записи в ьаблицу ==========
+	# Client.create :name => @name, :phone => @phone, :barber => @barber,
+	# 				:datestamp => @datestamp, :color => @color
+	# =========================
+	# втрой вырьянт записи в таблицу ==========
+	c = Client.new
+	c.name = @name
+	c.phone = @phone
+	c.barber = @barber
+	c.datestamp = @datestamp
+	c.color = @color
+	c.save
+
 	erb :visit
 end
+
 
 
 get '/contacts' do
